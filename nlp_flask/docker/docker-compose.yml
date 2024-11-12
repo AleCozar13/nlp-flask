@@ -1,0 +1,14 @@
+version: '3.9'
+
+services:
+  bert-api:
+    build:
+      context: ..  # Set the context to the parent directory
+      dockerfile: docker/Dockerfile  # Specify the location of the Dockerfile
+    container_name: huggingface_bert_api
+    ports:
+      - "5001:5001"
+    volumes:
+      - /tmp  # Anonymous volume, ensures cache isn’t stored permanently
+    restart: unless-stopped
+
